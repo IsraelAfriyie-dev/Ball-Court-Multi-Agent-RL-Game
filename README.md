@@ -1,5 +1,5 @@
 
-## MULTI-AGENT-RL-SIMULATION
+## Ball Court: Multi-Agent RL Game
 In this project we train a multi - agent robot to play a simple game against each other using the Reinforcement Learning using PPO gradient.
 This is then demonstrted in gazebo simulation using ROS2 humble 
 
