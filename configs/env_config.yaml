@@ -1,0 +1,110 @@
+# Environment Configuration for Ball Court
+
+# Default environment name
+env_name: "BallCourt-v0"
+
+# Environment settings
+env:
+  # Maximum steps per episode before truncation
+  max_steps: 6000
+  
+  # Number of lives per agent
+  max_lives: 5
+
+# Court configuration
+court:
+  # Court dimensions
+  length: 3.0
+  width: 1.5
+  
+  # Goal line positions
+  goal_line_x: 1.5
+  
+  # Penalty area
+  penalty_area_x: 1.2
+  
+  # Center position
+  center_y: 0.0
+
+# Agent 1 (Left side) configuration
+agent1:
+  # Starting position
+  start_x: -0.75
+  start_y: 0.0
+  
+  # Movement limits
+  max_linear_velocity: 1.5
+  max_y_position: 0.68
+  min_x_position: -1.47
+  max_x_position: -0.05
+
+# Agent 2 (Right side) configuration
+agent2:
+  # Starting position
+  start_x: 0.75
+  start_y: 0.0
+  
+  # Movement limits
+  max_linear_velocity: 1.5
+  max_y_position: 0.68
+  min_x_position: 0.05
+  max_x_position: 1.47
+
+# Ball physics configuration
+ball:
+  # Physical constants
+  gravity: 9.81
+  bounce_damping: 0.7
+  max_height: 1.5
+  reset_height: 0.175
+  
+  # Interaction parameters
+  normal_hit_force: 1.5
+  punch_hit_force: 3.0
+  interaction_radius: 0.2
+
+# Reward function weights
+rewards:
+  # Goal scoring
+  goal_scored: 10.0
+  goal_conceded: -10.0
+  
+  # Ball out of bounds
+  ball_out_of_bounds: -1.0
+  ball_out_of_height: -0.5
+  
+  # Time penalty (per step)
+  time_penalty: -0.001
+  
+  # Proximity bonus
+  proximity_bonus: 0.02
+  proximity_threshold: 0.3
+  
+  # Ball direction
+  ball_toward_goal: 0.01
+  ball_threshold: 0.1
+
+# Render settings
+render:
+  # Default render mode ("human" or "rgb_array")
+  mode: null
+  
+  # Frame rate
+  fps: 30
+  
+  # Window size
+  window_width: 800
+  window_height: 600
+
+# Observation space bounds
+observation:
+  # These define the Box space bounds for observations
+  low: -2.0
+  high: 2.0
+  shape: [12]  # 12-dimensional observation for each agent
+
+# Action space
+action:
+  # Discrete actions: 0=forward, 1=backward, 2=punch, 3=left, 4=right
+  num_actions: 5
+  type: "discrete"

@@ -1,0 +1,68 @@
+# Training Configuration for Ball Court Multi-Agent RL
+
+# Environment settings
+environment:
+  max_steps_per_episode: 6000
+  max_lives: 5
+  
+  # Court dimensions
+  court_length: 3.0
+  court_width: 1.5
+  
+  # Agent settings
+  agent:
+    max_linear_velocity: 1.5
+    max_y_position: 0.68
+    min_x_position: -1.47
+    max_x_position: -0.05
+  
+  # Ball physics
+  ball:
+    gravity: 9.81
+    bounce_damping: 0.7
+    max_height: 1.5
+    reset_height: 0.175
+
+# Training hyperparameters
+training:
+  max_episodes: 10000
+  update_interval: 24000  # Update policy every N timesteps
+  save_interval: 50000    # Save model every N timesteps
+  log_interval: 10        # Log every N episodes
+
+# PPO Algorithm Configuration
+ppo:
+  # Learning rates
+  lr_actor: 0.0003
+  lr_critic: 0.001
+  
+  # Discount factor
+  gamma: 0.99
+  
+  # PPO-specific parameters
+  eps_clip: 0.2          # Clipping parameter for PPO
+  k_epochs: 80           # Number of epochs per update
+  
+  # Loss weights
+  ent_coef: 0.01         # Entropy coefficient (exploration)
+  vf_coef: 0.5           # Value function coefficient
+  
+  # Gradient clipping
+  max_grad_norm: 0.5
+  
+  # Action space (set to false for discrete)
+  has_continuous_action_space: false
+  action_std_init: 0.6
+  action_std_decay_rate: 0.05
+  min_action_std: 0.1
+  action_std_decay_freq: 250000
+
+# Logging settings
+logging:
+  log_dir: "outputs/logs"
+  model_dir: "outputs/models"
+  tensorboard: true
+  save_replay: false
+
+# Random seed
+random_seed: 42
